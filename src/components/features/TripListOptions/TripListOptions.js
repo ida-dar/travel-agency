@@ -8,16 +8,21 @@ class TripListOptions extends React.Component {
   handleTags(tag, checked){
     if(checked) {
       console.log('Adding tag', tag);
-      // TODO - use action dispatcher from props
+      this.props.addFilterTag(tag);
     } else {
       console.log('Removing tag', tag);
-      // TODO - use action dispatcher from props
+      this.props.removeFilterTag(tag);
     }
   }
 
   handleDuration(type, value){
-    console.log('Changing duration', type, value);
-    // TODO - use action dispatcher from props
+    //console.log('Changing duration', type, value);
+
+    if(type === 'from') {
+      this.props.changeTripDurationFrom(value);
+    } else if (type === 'to') {
+      this.props.changeTripDurationTo(value);
+    }
   }
 
   handleSearch(phrase){
@@ -45,6 +50,7 @@ class TripListOptions extends React.Component {
               <label>
                 to:
                 <input className={`${styles.input} ${styles.number}`} type='number' value={filters.duration.to} min='1' max='14' onChange={event => this.handleDuration('to', event.currentTarget.value)} />
+                days
               </label>
             </div>
           </Col>
@@ -72,6 +78,10 @@ class TripListOptions extends React.Component {
 TripListOptions.propTypes = {
   tags: PropTypes.object,
   filters: PropTypes.object,
+  addFilterTag: PropTypes.func,
+  removeFilterTag: PropTypes.func,
+  changeTripDurationFrom: PropTypes.func,
+  changeTripDurationTo: PropTypes.func,
   changeSearchPhrase: PropTypes.func,
 };
 
