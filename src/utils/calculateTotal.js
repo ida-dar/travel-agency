@@ -2,10 +2,12 @@ import pricing from '../data/pricing.json';
 import {parseOptionPrice} from './parseOptionPrice';
 
 export const calculateTotal = (tripCost, options) => {
+  //console.log(tripCost, options);
   let total = parseOptionPrice(tripCost).value;
   let multiplier = 0;
   for (let option of pricing) {
     const currentValue = options[option.id];
+    //console.log(option, option.id, currentValue);
     if (typeof (currentValue) != 'undefined') {
       if (Array.isArray(currentValue) && Array.isArray(option.values)) {
         for (let optionId of currentValue) {

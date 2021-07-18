@@ -40,7 +40,7 @@ class App extends React.Component {
   mapStyles = (styles) => {
     return {
       opacity: styles.opacity,
-      transition: `transform 2s ease-in`,
+      transition: `transform 0.75s ease-in`,
       transform: `translateY(${styles.top}px)`,
     };
   }
