@@ -6,18 +6,22 @@ import {calculateTotal} from '../../../utils/calculateTotal';
 import {formatPrice} from '../../../utils/formatPrice';
 
 const addDays = (date, days) => {
-  // const dateParts = date.split('-');
-  // const result = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+  const dateParts = date.split('/');
+  // will return the date in dd/mm/yyyy format; '+' sets the type to number
+  // Please pay attention to the month (parts[1]); JavaScript counts months from 0: January - 0, February - 1, etc.
+  const result = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+  //console.log(result.toDateString());
 
-  const result = new Date();
-  result.setDate(result.getDate() + days);
-  const dateFormat = new Intl.DateTimeFormat('en-UK').format(result);
+  const newDate = result.setDate(result.getDate() + days);
+  const dateFormat = new Intl.DateTimeFormat('en-UK').format(newDate);
+
   return dateFormat;
 };
 
 const OrderSummary = ({tripCost, options, days}) => {
   const tripStartDay = options['start-date'];
   //console.log(tripCost, options, days, typeof(days), tripStartDay, typeof(tripStartDay));
+  //console.log(addDays(tripStartDay, days));
 
   return (
     <div>
