@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//import PropTypes from 'prop-types';
 import styles from './OrderOption.scss';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
@@ -14,6 +15,7 @@ const OrderOptionDate = () => {
         selected={startDate}
         onChange={(date) => setStartDate(date)}
         todayButton="Today"
+        dateFormat='dd/MM/yyyy'
         isClearable={true}
       />
     </div>

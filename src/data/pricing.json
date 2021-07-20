@@ -67,6 +67,7 @@
   {
     "id": "start-date",
     "name": "Preferred trip start",
-    "type": "date"
+    "type": "date",
+    "defaultValue": "20/07/2021"
   }
 ]
