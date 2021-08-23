@@ -1,10 +1,7 @@
 export const formatTime = time => {
 
-  if(time === undefined) {
-    return null;
-  } else if(isNaN(time)) {
-    return null;
-  } else if(time < 0){
+  if(time === undefined || isNaN(time) || time < 0) {
+
     return null;
   } else if(!isNaN(time)){
 
