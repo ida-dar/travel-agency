@@ -12,6 +12,11 @@ const mockProps = {
   promoDescription: 'decription',
 };
 
+beforeAll(() => {
+  const utilsModule = jest.requireActual('../../../utils/formatTime.js'); // instead of 'import' we use 'requireActual' to make sure that we are importing the actual code of this file, not the mocked version
+  utilsModule.formatTime = jest.fn(seconds => seconds); // 'formatTime' is changed into mock function that always returns the argument passed to that function.
+});
+
 describe('Component HappyHourAd', () => {
 
   it('should render without crashing', () => {
