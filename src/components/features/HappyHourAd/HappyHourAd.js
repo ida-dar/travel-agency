@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './HappyHourAd.scss';
 import PropTypes from 'prop-types';
 import { formatTime } from '../../../utils/formatTime';
+import { getCountdownTime } from '../../../utils/getCountdownTime';
 
 class HappyHourAd extends React.Component {
   constructor(){
@@ -25,7 +26,7 @@ class HappyHourAd extends React.Component {
 
   render() {
     const {title, promoDescription} = this.props;
-    const countDown = this.getCountdownTime();
+    const countDown = getCountdownTime();
 
     return(
       <div className={styles.component}>
@@ -35,16 +36,6 @@ class HappyHourAd extends React.Component {
     );
   }
 
-  getCountdownTime(){
-    const currentTime = new Date();
-    const nextNoon = new Date(Date.UTC(currentTime.getUTCFullYear(), currentTime.getUTCMonth(), currentTime.getUTCDate(), 12, 0, 0, 0)); // year, monthIndex, day, hours, minutes, seconds, milliseconds
-
-    if(currentTime.getUTCHours() >= 12){
-      nextNoon.setUTCDate(currentTime.getUTCDate() + 1);
-    }
-
-    return Math.round((nextNoon.getTime() - currentTime.getTime()) / 1000);
-  }
 }
 
 export default HappyHourAd;

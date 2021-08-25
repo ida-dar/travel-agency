@@ -3,6 +3,7 @@ import {NavLink, Link} from 'react-router-dom';
 import styles from './Header.scss';
 import Icon from '../../common/Icon/Icon';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import PhoneNumbers from '../../features/PhoneNumbers/PhoneNumbers';
 
 class Header extends React.Component {
   render(){
@@ -18,7 +19,7 @@ class Header extends React.Component {
                 </div>
               </Link>
             </Col>
-            <Col md={6}>
+            <Col md={5}>
               <nav>
                 <NavLink to='/trips' activeClassName='active'>Trips</NavLink>
                 <NavLink to='/countries' activeClassName='active'>Countries</NavLink>
@@ -26,9 +27,9 @@ class Header extends React.Component {
                 <NavLink to='/info' activeClassName='active'>Contact</NavLink>
               </nav>
             </Col>
-            <Col md={3} lg={2}>
+            <Col md={4} lg={3}>
               <div className={styles.contact}>
-                <Icon name='phone' /><span>678.243.8455</span>
+                <Icon name='phone' /><PhoneNumbers />
               </div>
             </Col>
           </Row>
