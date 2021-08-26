@@ -40,6 +40,10 @@
   padding: 0 ($base-size * 2);
   color: $color-secondary;
   font-weight: 700;
+  .happyHour {
+    font-size: ($base-size * 1.5);
+    color: $color-primary;
+  }
   span {
     display: block;
   }

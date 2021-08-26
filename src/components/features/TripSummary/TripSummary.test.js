@@ -1,6 +1,8 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import TripSummary from './TripSummary';
+import {promoPrice} from '../../../utils/promoPrice';
+import { getCountdownTime } from '../../../utils/getCountdownTime';
 
 describe('Component TripSummary', () => {
   it('should render without crashing', () => {
@@ -37,11 +39,16 @@ describe('Component TripSummary', () => {
     const expectedImageName = 'name';
     const expectedTripDays = 7;
     const expectedTripCost = '$1000';
+    const expectedPromoPrice = promoPrice(expectedTripCost, 20);
+    const countDown = getCountdownTime();
     const component = shallow(<TripSummary name={expectedImageName} days={expectedTripDays} cost={expectedTripCost} />);
 
     expect(component.find('.title').text()).toEqual(expectedImageName);
     expect(component.find('.details').childAt(0).text()).toEqual(`${expectedTripDays} days`);
-    expect(component.find('.details').childAt(1).text()).toEqual(`from ${expectedTripCost}`);
+    countDown > 23 * 60 * 60 ?
+      expect(component.find('.details').childAt(1).text()).toEqual(`from ${expectedTripCost}`) :
+      (expect(component.find('.details').childAt(1).text()).toEqual(`Price from ${expectedPromoPrice}`),
+      expect(component.find('.details').childAt(2).text()).toEqual(`Standard price from ${expectedTripCost}`));
   });
 
   it('should render tags correctly', () => {

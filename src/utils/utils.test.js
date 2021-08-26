@@ -1,4 +1,5 @@
 import { formatTime } from './formatTime';
+import { promoPrice } from './promoPrice';
 
 describe('utils', () => {
   describe('formatTime', () => {
@@ -25,4 +26,19 @@ describe('utils', () => {
     });
 
   });
+
+  describe('promoPrice', () => {
+
+    it('should return null if there is no args', () => {
+      expect(promoPrice()).toBe(null);
+    });
+
+    it('should return price as $1000 reduced by 20% if arg is proper', () => {
+      expect(promoPrice('$1000', 20)).toBe('$800');
+      expect(promoPrice('$10,000', 20)).toBe('$8,000');
+
+    });
+
+  });
+
 });
