@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines" : {
+    "npm" : "6.14",
+    "node" : ">=14.17 <15.0"
+  },
   "scripts": {
     "start": "npm-run-all -p server:*",
     "server:api": "node server.js",
