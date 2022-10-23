@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './OrderOption.scss';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const OrderOptionDate = () => {
   const [startDate, setStartDate] = useState(new Date());
